@@ -6,9 +6,11 @@ two-stage cascade: OpenCV motion gate + YOLOv8n object detector.
 ## Headline result
 
 ```
-Baseline (YOLOv8n on every frame):     [X.X] ms/frame  |  ~$[XXX]/camera/month
-Cascade (motion-gated YOLOv8n):        [X.X] ms/frame  |  ~$[XX]/camera/month
-Cost reduction:                        [X.X]x
+Baseline (YOLOv8n on every frame):     8.53 ms/frame  |  ~$16.16/camera/month
+Cascade (motion-gated YOLOv8n):        2.85 ms/frame  |  ~$5.40/camera/month
+Cost reduction:                        2.99x
+Motion threshold:                      2.0
+Gate pass rate:                        27.87%
 Recall on labeled test set:            see writeup.pdf
 ```
 

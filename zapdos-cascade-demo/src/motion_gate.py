@@ -9,9 +9,10 @@ Cost of this check on a 640x480 frame: ~100 microseconds on CPU.
 Cost of YOLOv8n inference on the same frame: several milliseconds on
 GPU. Every skipped frame is a saved GPU cycle at ~50x cost ratio.
 
-Threshold selection is empirical — see notebook Cell 12 for the
-sweep. On the synthetic clip we found [YOUR_THRESHOLD] filters out
-~[XX]% of frames while holding recall on active frames.
+Threshold selection is empirical — see notebook Cell 17 for the
+sweep. On the synthetic clip we found 2.0 lets ~27.87% of frames
+through to the detector (the remaining ~72% are cheap gate-only
+checks) while holding recall on active frames.
 """
 
 import cv2
