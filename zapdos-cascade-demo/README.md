@@ -11,7 +11,7 @@ Cascade (motion-gated YOLOv8n):        2.85 ms/frame  |  ~$5.40/camera/month
 Cost reduction:                        2.99x
 Motion threshold:                      2.0
 Gate pass rate:                        27.87%
-Recall on labeled test set:            see writeup.pdf
+Recall on labeled test set:            91.46% baseline vs 91.46% cascade (0.00% delta, 82 images)
 ```
 
 Cost basis: AWS g4dn.xlarge (1x T4) at $0.526/hr on-demand,

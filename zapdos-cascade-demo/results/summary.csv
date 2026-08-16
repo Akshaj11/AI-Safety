@@ -15,3 +15,7 @@ fps_assumed,5
 gpu_hourly_usd,0.526
 static_ratio_assumed,0.85
 gate_pass_rate,0.2787
+recall_baseline,0.9146
+recall_cascade,0.9146
+recall_delta,0.0000
+recall_check_images,82
