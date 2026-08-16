@@ -12,7 +12,7 @@ Recall on labeled test set:            91.46% baseline vs 91.46% cascade (0.00% 
 ```
 
 Cost basis: AWS g4dn.xlarge (1x T4), $0.526/hr on-demand, 24/7 at 5 fps per camera.
-Full breakdown in `results/summary.csv`.
+
 
 ## Why this cascade
 
