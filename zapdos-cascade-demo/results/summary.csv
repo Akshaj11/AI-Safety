@@ -1,0 +1,16 @@
+metric,value
+baseline_ms_per_frame,[X.X]
+cascade_ms_per_frame,[X.X]
+baseline_total_seconds,[XX.X]
+cascade_total_seconds,[XX.X]
+speedup,[X.X]
+motion_threshold,[X.X]
+frames_through_detector_baseline,1500
+frames_through_detector_cascade,[XXX]
+cost_baseline_per_camera_month,[XXX.X]
+cost_cascade_per_camera_month,[XX.X]
+cost_reduction_x,[X.X]
+total_frames_in_clip,1500
+fps_assumed,5
+gpu_hourly_usd,0.526
+static_ratio_assumed,0.85
