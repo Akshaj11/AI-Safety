@@ -1,4 +1,4 @@
-# Zapdos Cascade Demo
+# Zapdos AI Safety Optimization Demo
 
 Motion-gated YOLOv8n cascade for cheaper continuous CCTV inference.
 
@@ -18,43 +18,26 @@ Cost basis: AWS g4dn.xlarge (1x T4), $0.526/hr on-demand, 24/7 at 5 fps per came
 
 **The insight:** on a stationary CCTV camera, most frames are identical to
 the previous one. A full YOLOv8n inference on every one of those frames
-spends its whole budget confirming nothing changed. So the lever isn't a
-smaller model — it's a cheap filter deciding whether to run the model at
-all.
+spends its whole budget confirming nothing changed.
 
 **The gate:** `cv2.absdiff` on consecutive grayscale frames, mean over the
 frame. ~100 microseconds per frame on CPU vs several milliseconds of GPU
 inference — a ~50x cost ratio, so every skipped frame is a real saving.
-Threshold picked empirically from a sweep (see notebook Cell 17): 2.0 keeps
+Threshold picked empirically from a sweep: 2.0 keeps
 every active frame and drops most static ones.
 
 **The detector:** stock COCO-pretrained YOLOv8n. It doesn't know
-safety-specific classes like NO-Hardhat, but that's intentional — the
+safety-specific classes like NO-Hardhat, but that's intentional, the
 cascade's cost behavior is model-agnostic, so a fine-tuned detector would
-give the same speedup. Production swaps the weights, not the harness.
+give the same speedup.
 
 ## Why these metrics
 
 - **ms/frame** — the primitive. Everything else derives from it.
-- **$/camera/month** — the business-relevant unit. Latency doesn't sell;
-  monthly bills do. Formula in notebook Cell 20, all assumptions in
-  `summary.csv` so anyone can rerun with different pricing / fps.
+- **$/camera/month** — the business-relevant unit, so anyone can rerun with different pricing / fps.
 - **Recall on labeled test set** — cost is meaningless if the gate hides
-  real detections. Spot-checked separately on Roboflow's labeled test split
-  (Cell 22). Zero delta here is the strong result: 3x cheaper, same catches.
+  real detections. Spot-checked separately on Roboflow's labeled test split. Zero delta here is the strong result: 3x cheaper, same catches.
 
-## How to run
-
-The notebook is self-contained — no cloning, no `src/` imports, no path
-setup. Everything (motion gate, detector wrapper, harness, cost formula)
-lives in cells.
-
-1. Upload `notebook.ipynb` to [Colab](https://colab.research.google.com)
-   (`File -> Upload notebook`).
-2. `Runtime -> Change runtime type -> T4 GPU`.
-3. Left sidebar 🔑 -> add secret `ROBOFLOW_API_KEY` (free key from
-   roboflow.com/settings/api), toggle notebook access on.
-4. `Runtime -> Run all`. ~10-15 minutes end to end.
 
 ## Data
 
