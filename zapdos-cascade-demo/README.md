@@ -22,7 +22,7 @@ spends its whole budget confirming nothing changed.
 
 **The gate:** `cv2.absdiff` on consecutive grayscale frames, mean over the
 frame. ~100 microseconds per frame on CPU vs several milliseconds of GPU
-inference — a ~50x cost ratio, so every skipped frame is a real saving.
+inference a ~50x cost ratio, so every skipped frame is a real saving.
 Threshold picked empirically from a sweep: 2.0 keeps
 every active frame and drops most static ones.
 
@@ -43,12 +43,12 @@ give the same speedup.
 
 - **Labeled recall set:** Roboflow Universe "Construction Site Safety" v28,
   CC BY 4.0, 2,801 images across 25 classes.
-- **Streaming clip:** synthesized in Cell 10 — one background image + tiny
+- **Streaming clip:** synthesized one background image + tiny
   per-frame noise for 85% of frames (static), random dataset images spliced
-  in for 15% (active). 1,500 frames = 5 min at 5 fps.
+  in for 15% (active). 1,500 frames = 5 min at 5 fps. (The Idea remains the same though as explained below)
 - **Why synthetic and not real CCTV:** for a *cost* measurement the GPU
   can't tell a synthetic frame from a real one. The measurement does depend
-  on the 85/15 static/active ratio — a real deployment would remeasure that
+  on the 85/15 static/active ratio a real deployment would remeasure that
   on an actual site recording.
 
 ## Files
